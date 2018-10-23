@@ -18,6 +18,12 @@ class VoicetranscriptionController extends Controller
         $file=$request->file('upload');
         $base64 = base64_encode($file);
 
+        $headers = [
+            'Content-Type' => 'application/json',
+           
+        ];
+
+
         $client = new \GuzzleHttp\Client([
             'headers' => $headers
         ]);
@@ -25,9 +31,9 @@ class VoicetranscriptionController extends Controller
         $body = array(
          "audio" => ["content"=>$base64],
           "config" => [ "encoding"=>"ENCODING_UNSPECIFIED"]);
-          
 
-        $r = $client->request('POST', 'https://speech.googleapis.com/v1/speech:recognize', [
+
+        $r = $client->request('POST', 'https://speech.googleapis.com/v1/speech:recognize?key=AIzaSyCbwggG1ZAkN7QMpbjK3VsIPYBrzXPvTvc', [
             'body' => json_encode($body)
         ]);
         $response = $r->getBody()->getContents();
