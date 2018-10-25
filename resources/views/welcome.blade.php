@@ -92,9 +92,20 @@
                             <small id="emailHelp" class="form-text text-muted">Kindly upload an Mp3 audio file here</small>
                         </div>
                        
-                        <button type="submit" class="btn btn-primary">Transcript</button>
+                        <button type="submit" id="transcript" class="btn btn-primary">Transcribe</button>
                     </form>
                 </div>
+
+                <div id="mymessage" style="text-align:center; color:red; font-weight:bold;">
+                </div>
+
+                <div style="padding:20px; text-align:justify;font-weight:bold; font-size:16px; padding-top:60px; color:blue;">
+                @isset($data)
+                    @foreach($data as $speech)
+                        <p>{{ $speech }}</p>
+                    @endforeach
+                @endif
+                 </div>
                 
             </div>
         </div>
@@ -103,5 +114,12 @@
 
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("#transcript").click(function(){
+                    document.getElementById("mymessage").innerHTML="Transcribing please wait ...";
+                });
+            })
+        </script>
     </body>
 </html>
