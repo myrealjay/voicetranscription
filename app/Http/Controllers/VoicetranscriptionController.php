@@ -65,9 +65,15 @@ class VoicetranscriptionController extends Controller
     public function upload(Request $request){
         
         $keyfilepath=resource_path().'/My Project-e07bb0e17775.json';
+       
 
         //get the file upload
         $file=$request->file('upload');
+
+        /*$command = "ffmpeg -i $file -c:v libx264 convertedaudio.mp3";
+        exec($command);
+
+        $file="convertedaudio.mp3";*/
         
         # Instantiates a client
         $speech = new SpeechClient([

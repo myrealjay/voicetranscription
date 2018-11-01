@@ -99,7 +99,7 @@
                 <div id="mymessage" style="text-align:center; color:red; font-weight:bold;">
                 </div>
 
-                <div style="padding:20px; text-align:justify;font-weight:bold; font-size:16px; padding-top:60px; color:blue;">
+                <div style="padding:20px; text-align:justify;font-weight:bold; font-size:16px; padding-top:60px; color:blue; overflow:auto;">
                 @isset($data)
                     @foreach($data as $speech)
                         <p>{{ $speech }}</p>
